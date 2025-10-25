@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare Plus - Hospital Management System</title>
+    <style>
+        :root {
+            --color-white: rgba(255, 255, 255, 1);
+            --color-black: rgba(0, 0, 0, 1);
+            --color-cream-50: rgba(252, 252, 249, 1);
+            --color-cream-100: rgba(255, 255, 253, 1);
+            --color-gray-200: rgba(245, 245, 245, 1);
+            --color-gray-300: rgba(167, 169, 169, 1);
+            --color-gray-400: rgba(119, 124, 124, 1);
+            --color-slate-500: rgba(98, 108, 113, 1);
+            --color-brown-600: rgba(94, 82, 64, 1);
+            --color-charcoal-700: rgba(31, 33, 33, 1);
+            --color-charcoal-800: rgba(38, 40, 40, 1);
+            --color-slate-900: rgba(19, 52, 59, 1);
+            --color-teal-300: rgba(50, 184, 198, 1);
+            --color-teal-400: rgba(45, 166, 178, 1);
+            --color-teal-500: rgba(33, 128, 141, 1);
+            --color-teal-600: rgba(29, 116, 128, 1);
+            --color-teal-700: rgba(26, 104, 115, 1);
+            --color-teal-800: rgba(41, 150, 161, 1);
+            --color-red-400: rgba(255, 84, 89, 1);
+            --color-red-500: rgba(192, 21, 47, 1);
+            --color-orange-400: rgba(230, 129, 97, 1);
+            --color-orange-500: rgba(168, 75, 47, 1);
+            --color-brown-600-rgb: 94, 82, 64;
+            --color-teal-500-rgb: 33, 128, 141;
+            --color-slate-900-rgb: 19, 52, 59;
+            --color-slate-500-rgb: 98, 108, 113;
+            --color-red-500-rgb: 192, 21, 47;
+            --color-red-400-rgb: 255, 84, 89;
+            --color-orange-500-rgb: 168, 75, 47;
+            --color-orange-400-rgb: 230, 129, 97;
+            --color-bg-1: rgba(59, 130, 246, 0.08);
+            --color-bg-2: rgba(245, 158, 11, 0.08);
+            --color-bg-3: rgba(34, 197, 94, 0.08);
+            --color-bg-4: rgba(239, 68, 68, 0.08);
+            --color-bg-5: rgba(147, 51, 234, 0.08);
+            --color-bg-6: rgba(249, 115, 22, 0.08);
+            --color-bg-7: rgba(236, 72, 153, 0.08);
+            --color-bg-8: rgba(6, 182, 212, 0.08);
+            --color-background: var(--color-cream-50);
+            --color-surface: var(--color-cream-100);
+            --color-text: var(--color-slate-900);
+            --color-text-secondary: var(--color-slate-500);
+            --color-primary: var(--color-teal-500);
+            --color-primary-hover: var(--color-teal-600);
+            --color-primary-active: var(--color-teal-700);
+            --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+            --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+            --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+            --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+            --color-btn-primary-text: var(--color-cream-50);
+            --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+            --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+            --color-error: var(--color-red-500);
+            --color-success: var(--color-teal-500);
+            --color-warning: var(--color-orange-500);
+            --color-info: var(--color-slate-500);
+            --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+            --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+            --focus-ring: 0 0 0 3px var(--color-focus-ring);
+            --focus-outline: 2px solid var(--color-primary);
+            --status-bg-opacity: 0.15;
+            --status-border-opacity: 0.25;
+            --color-success-rgb: 33, 128, 141;
+            --color-error-rgb: 192, 21, 47;
+            --color-warning-rgb: 168, 75, 47;
+            --color-info-rgb: 98, 108, 113;
+            --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-size-xs: 11px;
+            --font-size-sm: 12px;
+            --font-size-base: 14px;
+            --font-size-md: 14px;
+            --font-size-lg: 16px;
+            --font-size-xl: 18px;
+            --font-size-2xl: 20px;
+            --font-size-3xl: 24px;
+            --font-size-4xl: 30px;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 550;
+            --font-weight-bold: 600;
+            --line-height-tight: 1.2;
+            --line-height-normal: 1.5;
+            --letter-spacing-tight: -0.01em;
+            --space-4: 4px;
+            --space-6: 6px;
+            --space-8: 8px;
+            --space-10: 10px;
+            --space-12: 12px;
+            --space-16: 16px;
+            --space-20: 20px;
+            --space-24: 24px;
+            --space-32: 32px;
+            --radius-sm: 6px;
+            --radius-base: 8px;
+            --radius-md: 10px;
+            --radius-lg: 12px;
+            --radius-full: 9999px;
+            --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+            --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+            --duration-fast: 150ms;
+            --duration-normal: 250ms;
+            --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-gray-400-rgb: 119, 124, 124;
+                --color-teal-300-rgb: 50, 184, 198;
+                --color-gray-300-rgb: 167, 169, 169;
+                --color-gray-200-rgb: 245, 245, 245;
+                --color-bg-1: rgba(29, 78, 216, 0.15);
+                --color-bg-2: rgba(180, 83, 9, 0.15);
+                --color-bg-3: rgba(21, 128, 61, 0.15);
+                --color-bg-4: rgba(185, 28, 28, 0.15);
+                --color-bg-5: rgba(107, 33, 168, 0.15);
+                --color-bg-6: rgba(194, 65, 12, 0.15);
+                --color-bg-7: rgba(190, 24, 93, 0.15);
+                --color-bg-8: rgba(8, 145, 178, 0.15);
+                --color-background: var(--color-charcoal-700);
+                --color-surface: var(--color-charcoal-800);
+                --color-text: var(--color-gray-200);
+                --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+                --color-primary: var(--color-teal-300);
+                --color-primary-hover: var(--color-teal-400);
+                --color-primary-active: var(--color-teal-800);
+                --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+                --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+                --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+                --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+                --color-error: var(--color-red-400);
+                --color-success: var(--color-teal-300);
+                --color-warning: var(--color-orange-400);
+                --color-info: var(--color-gray-300);
+                --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+                --color-btn-primary-text: var(--color-slate-900);
+                --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+                --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+                --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+                --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+                --color-success-rgb: var(--color-teal-300-rgb);
+                --color-error-rgb: var(--color-red-400-rgb);
+                --color-warning-rgb: var(--color-orange-400-rgb);
+                --color-info-rgb: var(--color-gray-300-rgb);
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-normal);
+            color: var(--color-text);
+            background-color: var(--color-background);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .header {
+            background-color: var(--color-surface);
+            border-bottom: 1px solid var(--color-card-border);
+            padding: var(--space-16) var(--space-24);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-12);
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary);
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--color-primary);
+            border-radius: var(--radius-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-btn-primary-text);
+        }
+
+        .nav {
+            display: flex;
+            gap: var(--space-24);
+            align-items: center;
+        }
+
+        .nav-link {
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            transition: color var(--duration-fast) var(--ease-standard);
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            color: var(--color-primary);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-8) var(--space-16);
+            border-radius: var(--radius-base);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-standard);
+            border: none;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-btn-primary-text);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-hover);
+        }
+
+        .btn-secondary {
+            background: var(--color-secondary);
+            color: var(--color-text);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-secondary-hover);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: var(--space-24);
+        }
+
+        .hero {
+            text-align: center;
+            padding: var(--space-32) var(--space-24);
+            background: linear-gradient(135deg, var(--color-bg-1), var(--color-bg-3));
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-32);
+        }
+
+        .hero-title {
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-16);
+            color: var(--color-text);
+        }
+
+        .hero-subtitle {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-24);
+        }
+
+        .role-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-24);
+            margin-bottom: var(--space-32);
+        }
+
+        .card {
+            background-color: var(--color-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-card-border);
+            box-shadow: var(--shadow-sm);
+            padding: var(--space-24);
+            transition: all var(--duration-normal) var(--ease-standard);
+            cursor: pointer;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-3xl);
+            margin-bottom: var(--space-16);
+        }
+
+        .card-icon.patient {
+            background: var(--color-bg-1);
+        }
+
+        .card-icon.doctor {
+            background: var(--color-bg-3);
+        }
+
+        .card-icon.admin {
+            background: var(--color-bg-5);
+        }
+
+        .card-title {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-8);
+            color: var(--color-text);
+        }
+
+        .card-description {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-16);
+        }
+
+        .dashboard {
+            display: none;
+        }
+
+        .dashboard.active {
+            display: block;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-24);
+            padding-bottom: var(--space-16);
+            border-bottom: 1px solid var(--color-card-border);
+        }
+
+        .dashboard-title {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-text);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-20);
+            margin-bottom: var(--space-32);
+        }
+
+        .stat-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-20);
+        }
+
+        .stat-label {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-8);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .stat-value {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-text);
+        }
+
+        .section {
+            margin-bottom: var(--space-32);
+        }
+
+        .section-title {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--space-16);
+            color: var(--color-text);
+        }
+
+        .table-container {
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: var(--color-secondary);
+        }
+
+        th {
+            text-align: left;
+            padding: var(--space-12) var(--space-16);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text);
+            border-bottom: 1px solid var(--color-card-border-inner);
+        }
+
+        td {
+            padding: var(--space-12) var(--space-16);
+            border-bottom: 1px solid var(--color-card-border-inner);
+            font-size: var(--font-size-base);
+            color: var(--color-text);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: var(--color-secondary);
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            padding: var(--space-6) var(--space-12);
+            border-radius: var(--radius-full);
+            font-weight: var(--font-weight-medium);
+            font-size: var(--font-size-sm);
+        }
+
+        .status-success {
+            background-color: rgba(var(--color-success-rgb, 33, 128, 141), var(--status-bg-opacity));
+            color: var(--color-success);
+            border: 1px solid rgba(var(--color-success-rgb, 33, 128, 141), var(--status-border-opacity));
+        }
+
+        .status-warning {
+            background-color: rgba(var(--color-warning-rgb, 168, 75, 47), var(--status-bg-opacity));
+            color: var(--color-warning);
+            border: 1px solid rgba(var(--color-warning-rgb, 168, 75, 47), var(--status-border-opacity));
+        }
+
+        .status-error {
+            background-color: rgba(var(--color-error-rgb, 192, 21, 47), var(--status-bg-opacity));
+            color: var(--color-error);
+            border: 1px solid rgba(var(--color-error-rgb, 192, 21, 47), var(--status-border-opacity));
+        }
+
+        .status-info {
+            background-color: rgba(var(--color-info-rgb, 98, 108, 113), var(--status-bg-opacity));
+            color: var(--color-info);
+            border: 1px solid rgba(var(--color-info-rgb, 98, 108, 113), var(--status-border-opacity));
+        }
+
+        .form-group {
+            margin-bottom: var(--space-16);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-8);
+            font-weight: var(--font-weight-medium);
+            font-size: var(--font-size-sm);
+            color: var(--color-text);
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            padding: var(--space-8) var(--space-12);
+            font-size: var(--font-size-md);
+            line-height: 1.5;
+            color: var(--color-text);
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            transition: border-color var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) var(--ease-standard);
+        }
+
+        .form-control:focus {
+            border-color: var(--color-primary);
+            outline: var(--focus-outline);
+        }
+
+        textarea.form-control {
+            font-family: var(--font-family-base);
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: var(--space-12);
+            margin-top: var(--space-16);
+        }
+
+        .btn-sm {
+            padding: var(--space-6) var(--space-12);
+            font-size: var(--font-size-sm);
+        }
+
+        .welcome-screen {
+            display: block;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            padding: var(--space-32);
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-20);
+            color: var(--color-text);
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-16);
+            margin-bottom: var(--space-32);
+        }
+
+        .quick-action-btn {
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-16);
+            text-align: center;
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-standard);
+        }
+
+        .quick-action-btn:hover {
+            background: var(--color-secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .quick-action-icon {
+            font-size: var(--font-size-3xl);
+            margin-bottom: var(--space-8);
+        }
+
+        .quick-action-label {
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-text);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: var(--space-16);
+            }
+
+            .nav {
+                flex-direction: column;
+                gap: var(--space-12);
+            }
+
+            .hero-title {
+                font-size: var(--font-size-2xl);
+            }
+
+            .role-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-12);
+            }
+
+            .table-container {
+                overflow-x: auto;
+            }
+
+            table {
+                min-width: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">⚕</div>
+                <span>MediCare Plus</span>
+            </div>
+            <nav class="nav">
+                <a class="nav-link" onclick="showHome()">Home</a>
+                <a class="nav-link" onclick="showAbout()">About</a>
+                <a class="nav-link" onclick="showServices()">Services</a>
+                <a class="nav-link" onclick="showContact()">Contact</a>
+                <button class="btn btn-primary" id="loginBtn" onclick="showHome()">Portal Login</button>
+                <button class="btn btn-secondary hidden" id="logoutBtn" onclick="logout()">Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Welcome Screen -->
+        <div id="welcomeScreen" class="welcome-screen">
+            <div class="hero">
+                <h1 class="hero-title">Welcome to MediCare Plus HMS</h1>
+                <p class="hero-subtitle">Advanced Healthcare Management for the Modern Age</p>
+            </div>
+
+            <div class="role-cards">
+                <div class="card" onclick="selectRole('patient')">
+                    <div class="card-icon patient">👤</div>
+                    <h3 class="card-title">Patient Portal</h3>
+                    <p class="card-description">Book appointments, view medical records, manage prescriptions, and access lab results securely.</p>
+                    <button class="btn btn-primary">Access Portal</button>
+                </div>
+
+                <div class="card" onclick="selectRole('doctor')">
+                    <div class="card-icon doctor">👨‍⚕️</div>
+                    <h3 class="card-title">Doctor Portal</h3>
+                    <p class="card-description">Manage patient appointments, update medical records, prescribe medications, and track patient progress.</p>
+                    <button class="btn btn-primary">Access Portal</button>
+                </div>
+
+                <div class="card" onclick="selectRole('admin')">
+                    <div class="card-icon admin">⚙️</div>
+                    <h3 class="card-title">Admin Portal</h3>
+                    <p class="card-description">Oversee hospital operations, manage staff, analyze reports, and optimize resource allocation.</p>
+                    <button class="btn btn-primary">Access Portal</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Patient Dashboard -->
+        <div id="patientDashboard" class="dashboard">
+            <div class="dashboard-header">
+                <h2 class="dashboard-title">Patient Dashboard</h2>
+                <span id="patientName" style="color: var(--color-text-secondary);">Welcome, John Doe</span>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Upcoming Appointments</div>
+                    <div class="stat-value">3</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Pending Reports</div>
+                    <div class="stat-value">2</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Active Prescriptions</div>
+                    <div class="stat-value">5</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Health Score</div>
+                    <div class="stat-value">92%</div>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <div class="quick-action-btn" onclick="openModal('appointmentModal')">
+                    <div class="quick-action-icon">📅</div>
+                    <div class="quick-action-label">Book Appointment</div>
+                </div>
+                <div class="quick-action-btn" onclick="openModal('prescriptionModal')">
+                    <div class="quick-action-icon">💊</div>
+                    <div class="quick-action-label">View Prescriptions</div>
+                </div>
+                <div class="quick-action-btn" onclick="openModal('reportsModal')">
+                    <div class="quick-action-icon">📋</div>
+                    <div class="quick-action-label">Lab Reports</div>
+                </div>
+                <div class="quick-action-btn" onclick="openModal('billingModal')">
+                    <div class="quick-action-icon">💳</div>
+                    <div class="quick-action-label">Billing</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Upcoming Appointments</h3>
+                <div class="table-container">
+                    <table id="patientAppointmentsTable">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Doctor</th>
+                                <th>Department</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Oct 28, 2025</td>
+                                <td>10:00 AM</td>
+                                <td>Dr. Sarah Johnson</td>
+                                <td>Cardiology</td>
+                                <td><span class="status status-success">Confirmed</span></td>
+                            </tr>
+                            <tr>
+                                <td>Oct 30, 2025</td>
+                                <td>2:30 PM</td>
+                                <td>Dr. Michael Chen</td>
+                                <td>Orthopedics</td>
+                                <td><span class="status status-warning">Pending</span></td>
+                            </tr>
+                            <tr>
+                                <td>Nov 2, 2025</td>
+                                <td>11:00 AM</td>
+                                <td>Dr. Emily Brown</td>
+                                <td>Neurology</td>
+                                <td><span class="status status-success">Confirmed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Medical History</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Condition</th>
+                                <th>Treatment</th>
+                                <th>Doctor</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Oct 15, 2025</td>
+                                <td>Annual Checkup</td>
+                                <td>Physical Examination</td>
+                                <td>Dr. Sarah Johnson</td>
+                                <td>All vitals normal</td>
+                            </tr>
+                            <tr>
+                                <td>Aug 22, 2025</td>
+                                <td>Hypertension</td>
+                                <td>Medication prescribed</td>
+                                <td>Dr. Sarah Johnson</td>
+                                <td>Monitor BP weekly</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Doctor Dashboard -->
+        <div id="doctorDashboard" class="dashboard">
+            <div class="dashboard-header">
+                <h2 class="dashboard-title">Doctor Dashboard</h2>
+                <span id="doctorName" style="color: var(--color-text-secondary);">Dr. Sarah Johnson - Cardiology</span>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Today's Appointments</div>
+                    <div class="stat-value">12</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Pending Reports</div>
+                    <div class="stat-value">7</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Active Patients</div>
+                    <div class="stat-value">48</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Consultations (Month)</div>
+                    <div class="stat-value">156</div>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <div class="quick-action-btn" onclick="openModal('addPatientModal')">
+                    <div class="quick-action-icon">👤</div>
+                    <div class="quick-action-label">Add Patient Record</div>
+                </div>
+                <div class="quick-action-btn" onclick="openModal('prescribeModal')">
+                    <div class="quick-action-icon">💊</div>
+                    <div class="quick-action-label">Prescribe Medication</div>
+                </div>
+                <div class="quick-action-btn" onclick="openModal('labOrderModal')">
+                    <div class="quick-action-icon">🔬</div>
+                    <div class="quick-action-label">Order Lab Tests</div>
+                </div>
+                <div class="quick-action-btn" onclick="openModal('scheduleModal')">
+                    <div class="quick-action-icon">📅</div>
+                    <div class="quick-action-label">Manage Schedule</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Today's Appointments</h3>
+                <div class="table-container">
+                    <table id="doctorAppointmentsTable">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Patient Name</th>
+                                <th>Age</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>9:00 AM</td>
+                                <td>John Doe</td>
+                                <td>45</td>
+                                <td>Follow-up</td>
+                                <td><span class="status status-success">Completed</span></td>
+                                <td><button class="btn btn-sm btn-secondary">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>10:00 AM</td>
+                                <td>Jane Smith</td>
+                                <td>32</td>
+                                <td>Consultation</td>
+                                <td><span class="status status-warning">In Progress</span></td>
+                                <td><button class="btn btn-sm btn-primary">Start</button></td>
+                            </tr>
+                            <tr>
+                                <td>11:00 AM</td>
+                                <td>Robert Wilson</td>
+                                <td>58</td>
+                                <td>Emergency</td>
+                                <td><span class="status status-error">Urgent</span></td>
+                                <td><button class="btn btn-sm btn-primary">Start</button></td>
+                            </tr>
+                            <tr>
+                                <td>2:00 PM</td>
+                                <td>Emily Davis</td>
+                                <td>28</td>
+                                <td>Checkup</td>
+                                <td><span class="status status-info">Scheduled</span></td>
+                                <td><button class="btn btn-sm btn-secondary">View</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Recent Patient Updates</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Patient</th>
+                                <th>Last Visit</th>
+                                <th>Diagnosis</th>
+                                <th>Next Appointment</th>
+                                <th>Priority</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Michael Brown</td>
+                                <td>Oct 20, 2025</td>
+                                <td>Hypertension</td>
+                                <td>Nov 20, 2025</td>
+                                <td><span class="status status-warning">Medium</span></td>
+                            </tr>
+                            <tr>
+                                <td>Sarah Miller</td>
+                                <td>Oct 22, 2025</td>
+                                <td>Diabetes Type 2</td>
+                                <td>Nov 5, 2025</td>
+                                <td><span class="status status-error">High</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div id="adminDashboard" class="dashboard">
+            <div class="dashboard-header">
+                <h2 class="dashboard-title">Admin Dashboard</h2>
+                <span id="adminName" style="color: var(--color-text-secondary);">Administrator</span>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Total Patients</div>
+                    <div class="stat-value">2,847</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Active Staff</div>
+                    <div class="stat-value">234</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Bed Occupancy</div>
+                    <div class="stat-value">78%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Revenue (Month)</div>
+                    <div class="stat-value">$1.2M</div>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <div class="quick-action-btn" onclick="openModal('staffModal')">
+                    <div class="quick-action-icon">👥</div>
+                    <div class="quick-action-label">Manage Staff</div>
+                </div>
+                <div class="quick-action-btn" onclick="openModal('inventoryModal')">
+                    <div class="quick-action-icon">📦</div>
+                    <div class="quick-action-label">Inventory</div>
+                </div>
+                <div class="quick-action-btn" onclick="openModal('revenueModal')">
+                    <div class="quick-action-icon">💰</div>
+                    <div class="quick-action-label">Financial Reports</div>
+                </div>
+                <div class="quick-action-btn" onclick="openModal('settingsModal')">
+                    <div class="quick-action-icon">⚙️</div>
+                    <div class="quick-action-label">System Settings</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Department Performance</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Department</th>
+                                <th>Patients Today</th>
+                                <th>Staff on Duty</th>
+                                <th>Bed Utilization</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Emergency</td>
+                                <td>45</td>
+                                <td>18</td>
+                                <td>92%</td>
+                                <td><span class="status status-error">High Load</span></td>
+                            </tr>
+                            <tr>
+                                <td>Cardiology</td>
+                                <td>32</td>
+                                <td>12</td>
+                                <td>75%</td>
+                                <td><span class="status status-success">Normal</span></td>
+                            </tr>
+                            <tr>
+                                <td>Orthopedics</td>
+                                <td>28</td>
+                                <td>10</td>
+                                <td>68%</td>
+                                <td><span class="status status-success">Normal</span></td>
+                            </tr>
+                            <tr>
+                                <td>Pediatrics</td>
+                                <td>51</td>
+                                <td>15</td>
+                                <td>85%</td>
+                                <td><span class="status status-warning">Moderate</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Staff Management</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Department</th>
+                                <th>Shift</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Dr. Sarah Johnson</td>
+                                <td>Cardiologist</td>
+                                <td>Cardiology</td>
+                                <td>Morning</td>
+                                <td><span class="status status-success">On Duty</span></td>
+                                <td><button class="btn btn-sm btn-secondary">Edit</button></td>
+                            </tr>
+                            <tr>
+                                <td>Dr. Michael Chen</td>
+                                <td>Orthopedist</td>
+                                <td>Orthopedics</td>
+                                <td>Evening</td>
+                                <td><span class="status status-info">Off Duty</span></td>
+                                <td><button class="btn btn-sm btn-secondary">Edit</button></td>
+                            </tr>
+                            <tr>
+                                <td>Nurse Jessica Lee</td>
+                                <td>Senior Nurse</td>
+                                <td>Emergency</td>
+                                <td>Night</td>
+                                <td><span class="status status-success">On Duty</span></td>
+                                <td><button class="btn btn-sm btn-secondary">Edit</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Appointment Booking -->
+    <div id="appointmentModal" class="modal">
+        <div class="modal-content">
+            <h3 class="modal-header">Book New Appointment</h3>
+            <form onsubmit="bookAppointment(event)">
+                <div class="form-group">
+                    <label class="form-label">Department</label>
+                    <select class="form-control" required>
+                        <option value="">Select Department</option>
+                        <option value="cardiology">Cardiology</option>
+                        <option value="orthopedics">Orthopedics</option>
+                        <option value="neurology">Neurology</option>
+                        <option value="pediatrics">Pediatrics</option>
+                        <option value="dermatology">Dermatology</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Doctor</label>
+                    <select class="form-control" required>
+                        <option value="">Select Doctor</option>
+                        <option value="dr-johnson">Dr. Sarah Johnson</option>
+                        <option value="dr-chen">Dr. Michael Chen</option>
+                        <option value="dr-brown">Dr. Emily Brown</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Preferred Date</label>
+                    <input type="date" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Preferred Time</label>
+                    <input type="time" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Reason for Visit</label>
+                    <textarea class="form-control" required></textarea>
+                </div>
+                <div class="action-buttons">
+                    <button type="submit" class="btn btn-primary">Book Appointment</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('appointmentModal')">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Generic Modal for other actions -->
+    <div id="genericModal" class="modal">
+        <div class="modal-content">
+            <h3 class="modal-header" id="genericModalTitle">Action</h3>
+            <p id="genericModalContent">This feature is available in the full system.</p>
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="closeModal('genericModal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentRole = null;
+        const modalMap = {
+            'prescriptionModal': 'View Prescriptions',
+            'reportsModal': 'Lab Reports',
+            'billingModal': 'Billing Information',
+            'addPatientModal': 'Add Patient Record',
+            'prescribeModal': 'Prescribe Medication',
+            'labOrderModal': 'Order Lab Tests',
+            'scheduleModal': 'Manage Schedule',
+            'staffModal': 'Manage Staff',
+            'inventoryModal': 'Inventory Management',
+            'revenueModal': 'Financial Reports',
+            'settingsModal': 'System Settings'
+        };
+
+        function showHome() {
+            document.getElementById('welcomeScreen').classList.remove('hidden');
+            document.getElementById('patientDashboard').classList.remove('active');
+            document.getElementById('doctorDashboard').classList.remove('active');
+            document.getElementById('adminDashboard').classList.remove('active');
+            document.getElementById('loginBtn').classList.remove('hidden');
+            document.getElementById('logoutBtn').classList.add('hidden');
+            currentRole = null;
+        }
+
+        function showAbout() {
+            alert('About MediCare Plus: A comprehensive hospital management system designed to streamline healthcare operations and improve patient care.');
+        }
+
+        function showServices() {
+            alert('Our Services: Multi-specialty consultations, 24/7 Emergency care, Advanced diagnostics, Telemedicine, and more.');
+        }
+
+        function showContact() {
+            alert('Contact Us:\nPhone: +1 (555) 123-4567\nEmail: info@medicareplus.com\nAddress: 123 Healthcare Ave, Medical District');
+        }
+
+        function selectRole(role) {
+            currentRole = role;
+            document.getElementById('welcomeScreen').classList.add('hidden');
+            document.getElementById('loginBtn').classList.add('hidden');
+            document.getElementById('logoutBtn').classList.remove('hidden');
+            
+            if (role === 'patient') {
+                document.getElementById('patientDashboard').classList.add('active');
+            } else if (role === 'doctor') {
+                document.getElementById('doctorDashboard').classList.add('active');
+            } else if (role === 'admin') {
+                document.getElementById('adminDashboard').classList.add('active');
+            }
+        }
+
+        function logout() {
+            currentRole = null;
+            showHome();
+        }
+
+        function openModal(modalId) {
+            if (modalId === 'appointmentModal') {
+                document.getElementById('appointmentModal').classList.add('active');
+            } else {
+                const modalTitle = modalMap[modalId] || 'Feature';
+                document.getElementById('genericModalTitle').textContent = modalTitle;
+                document.getElementById('genericModalContent').textContent = `${modalTitle} feature is available in the full HMS system. This includes comprehensive functionality for managing ${modalTitle.toLowerCase()}.`;
+                document.getElementById('genericModal').classList.add('active');
+            }
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        function bookAppointment(event) {
+            event.preventDefault();
+            alert('Appointment booked successfully! You will receive a confirmation email shortly.');
+            closeModal('appointmentModal');
+            
+            const table = document.getElementById('patientAppointmentsTable').querySelector('tbody');
+            const newRow = table.insertRow(0);
+            newRow.innerHTML = `
+                <td>Nov 5, 2025</td>
+                <td>3:00 PM</td>
+                <td>Dr. Sarah Johnson</td>
+                <td>Cardiology</td>
+                <td><span class="status status-warning">Pending</span></td>
+            `;
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+            }
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
